@@ -7,7 +7,6 @@ class TreeNode:
         if children is None:
             self.children = []
 
-
     def __str__(self, level=0):
         ret = "  " * level + str(self.data) + "\n"
         for child in self.children:
@@ -19,16 +18,16 @@ class TreeNode:
         self.children.append(TreeNode)
 
 
-tree = TreeNode("drinks", [])
+tree = TreeNode("drinks")
 
-hot = TreeNode("Hot", [])
-cold = TreeNode("Cold", [])
+hot = TreeNode("Hot")
+cold = TreeNode("Cold")
 
-coffee = TreeNode("Coffee", [])
-tea = TreeNode("Tea", [])
+coffee = TreeNode("Coffee")
+tea = TreeNode("Tea")
 
-fanta = TreeNode("Fanta", [])
-milk = TreeNode("Milk", [])
+fanta = TreeNode("Fanta")
+milk = TreeNode("Milk")
 
 tree.add_child(hot)
 tree.add_child(cold)
