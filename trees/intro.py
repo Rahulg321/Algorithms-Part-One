@@ -6,6 +6,8 @@ class TreeNode:
         self.data = data
         if children is None:
             self.children = []
+        else:
+            self.children = children
 
 
     def __str__(self, level=0):

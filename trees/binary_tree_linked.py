@@ -78,10 +78,10 @@ def levelOrderTraversal(rootNode):
         customQueue = queue.Queue()
         customQueue.enqueue(rootNode)
 
-# while it returns False
+# while custom queue is not empty
         while not(customQueue.is_empty()):
             root = customQueue.dequeue()
-            print(root.value.data, end="-> ")
+            print(root.value.data, end=" -▶ ")
 
             if root.value.leftChild is not None:
                 customQueue.enqueue(root.value.leftChild)
@@ -149,7 +149,7 @@ def insertNewNode(rootNode, newNode):
 
 def getDeepestNode(rootNode):
     """
-    this method returs the  deepest node from the tree by doing levelOrderTraversal
+    the last node after level order Traversal is the deepest Node
     """
 
     element = None
@@ -173,3 +173,70 @@ def getDeepestNode(rootNode):
 
         return element
 
+def delete_deepest_node(rootNode):
+    """
+    this function deletes the deepest node from a binary Tree
+    """
+    if not(rootNode): #if the rootNode is None
+        return
+    else:
+        deepest_node = getDeepestNode(rootNode)
+        custom_queue = queue.Queue()
+        custom_queue.enqueue(rootNode)
+        while custom_queue.is_empty() is False:
+            root = custom_queue.dequeue()
+
+            if root.value is deepest_node:
+                print("The deepest Node was deleted")
+                root.value.data = None
+
+            if root.value.leftChild:
+                if root.value.leftChild is deepest_node:
+                    print("The deepest Node was deleted")
+                    root.value.leftChild = None
+                else:
+                    custom_queue.enqueue(root.value.leftChild)
+
+            if root.value.rightChild:
+                if root.value.rightChild is deepest_node:
+                    print("The deepest Node was deleted")
+                    root.value.rightChild = None
+                else:
+                    custom_queue.enqueue(root.value.rightChild)
+
+
+
+
+def delete_node(rootNode,d_node):
+    if rootNode is None:
+        return
+    else:
+        deepest_node = getDeepestNode(rootNode)
+
+        custom_queue = queue.Queue()
+        custom_queue.enqueue(rootNode)
+
+        while custom_queue.is_empty() is False:
+            root = custom_queue.dequeue()
+
+            if root.value is d_node:
+                root.value.data = deepest_node.data
+                delete_deepest_node(rootNode)
+                break
+
+            if root.value.leftChild is not None:
+                custom_queue.enqueue(root.value.leftChild)
+
+            if root.value.rightChild is not None:
+                custom_queue.enqueue(root.value.rightChild)
+
+
+levelOrderTraversal(BT)
+print()
+delete_deepest_node(BT)
+levelOrderTraversal(BT)
+
+print()
+print("Deleting a specific node from the Tree")
+delete_node(rootNode=BT, d_node=cold)
+levelOrderTraversal(BT)

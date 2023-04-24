@@ -28,6 +28,7 @@ class Queue:
     def is_empty(self):
         if self.Queue.head is None:
             return True
+        return False
 
     def enqueue(self, data):
         newNode = Node(data)
