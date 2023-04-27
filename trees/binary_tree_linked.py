@@ -2,7 +2,7 @@
 
 # creating binary tree using Linked Lists
 
-#*******OPERATIONS*************
+# *******OPERATIONS*************
 # creation of a tree
 # insertion of  a node
 # deletion of  a node
@@ -24,7 +24,6 @@ BT = TreeNode("Drinks")
 
 hot = TreeNode("Hot")
 cold = TreeNode("Cold")
-
 
 coffee = TreeNode("Coffee")
 tea = TreeNode("Tea")
@@ -78,8 +77,8 @@ def levelOrderTraversal(rootNode):
         customQueue = queue.Queue()
         customQueue.enqueue(rootNode)
 
-# while custom queue is not empty
-        while not(customQueue.is_empty()):
+        # while custom queue is not empty
+        while not (customQueue.is_empty()):
             root = customQueue.dequeue()
             print(root.value.data, end=" -▶ ")
 
@@ -91,7 +90,6 @@ def levelOrderTraversal(rootNode):
 
 
 def searchBT(rootNode, nodeValue):
-
     is_found = False
 
     if rootNode.data is None:
@@ -101,7 +99,7 @@ def searchBT(rootNode, nodeValue):
         customQueue = queue.Queue()
         customQueue.enqueue(rootNode)
 
-        while not(customQueue.is_empty()):
+        while not (customQueue.is_empty()):
             root = customQueue.dequeue()
             print(root.value.data, end="  -> ")
             if root.value.data == nodeValue:
@@ -129,7 +127,7 @@ def insertNewNode(rootNode, newNode):
         customQueue = queue.Queue()
         customQueue.enqueue(rootNode)
 
-        while not(customQueue.is_empty()):
+        while not (customQueue.is_empty()):
             root = customQueue.dequeue()
 
             if root.value.leftChild is not None:
@@ -160,8 +158,8 @@ def getDeepestNode(rootNode):
         customQueue = queue.Queue()
         customQueue.enqueue(rootNode)
 
-# while it returns False
-        while not(customQueue.is_empty()):
+        # while it returns False
+        while not (customQueue.is_empty()):
             root = customQueue.dequeue()
 
             element = root.value
@@ -173,11 +171,12 @@ def getDeepestNode(rootNode):
 
         return element
 
+
 def delete_deepest_node(rootNode):
     """
     this function deletes the deepest node from a binary Tree
     """
-    if not(rootNode): #if the rootNode is None
+    if not rootNode:  # if the rootNode is None
         return
     else:
         deepest_node = getDeepestNode(rootNode)
@@ -205,9 +204,7 @@ def delete_deepest_node(rootNode):
                     custom_queue.enqueue(root.value.rightChild)
 
 
-
-
-def delete_node(rootNode,d_node):
+def delete_node(rootNode, d_node):
     if rootNode is None:
         return
     else:

@@ -1,4 +1,4 @@
-# this is used as as a helper class for level order traversal  in tree
+# this is used as a helper class for level order traversal  in tree
 class Node:
     def __init__(self, value):
         self.value = value
