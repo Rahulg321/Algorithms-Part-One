@@ -37,7 +37,8 @@ class BinaryTreeList:
         """
         root -> left -> right
         """
-        if index > self.last_used_index: #if currIndex exceeds the last used index in list
+        # if currIndex exceeds the last used index in list
+        if index > self.last_used_index:
             return
         else:
             print(self.custom_list[index])
@@ -70,6 +71,29 @@ class BinaryTreeList:
         for i in range(1, self.last_used_index + 1):
             print(self.custom_list[i])
 
+        return
+
+    def delete_tree(self):
+        self.custom_list = [None] * self.max_size
+        return
+
+    def get_deepest_node(self):
+        return self.custom_list[self.last_used_index]
+
+
+    def delete_node(self, value):
+        last_node = self.get_deepest_node()
+        for i in range(1, self.last_used_index + 1):
+            if self.custom_list[i] == value:
+                self.custom_list[self.last_used_index] = None
+                self.custom_list[i] = last_node
+                self.last_used_index -= 1
+                return "element successfully deleted"
+
+        return "node was not present in the list"
+
+
+
 
 NewBT = BinaryTreeList(10)
 
@@ -80,9 +104,6 @@ NewBT.insert_node("Tea")
 NewBT.insert_node("Coffee")
 NewBT.insert_node("Fanta")
 NewBT.insert_node("Cola")
-
-print(NewBT.custom_list)
-print(NewBT.last_used_index)
 
 # print("pre order traversal [root -> left -> right]")
 # NewBT.pre_order_traversal(1)
@@ -95,5 +116,12 @@ print(NewBT.last_used_index)
 
 
 
-print("level_order-traversal")
+print("level_order_traversal")
+NewBT.level_order_traversal()
+
+print("calling the delete method")
+NewBT.delete_node("Drinks")
+
+
+print("level_order_traversal")
 NewBT.level_order_traversal()
