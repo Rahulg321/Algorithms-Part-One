@@ -230,10 +230,7 @@ def delete_node(rootNode, d_node):
 
 levelOrderTraversal(BT)
 print()
-delete_deepest_node(BT)
-levelOrderTraversal(BT)
 
-print()
 print("Deleting a specific node from the Tree")
-delete_node(rootNode=BT, d_node=cold)
+delete_node(rootNode=BT, d_node=milk)
 levelOrderTraversal(BT)
