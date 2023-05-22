@@ -35,6 +35,7 @@ def insert_new_node(root_node, node_value):
 
         return "the node was inserted"
 
+
 def pre_order_traversal(root_node):
     """
     root -> left -> right
@@ -42,9 +43,10 @@ def pre_order_traversal(root_node):
     if root_node is None:
         return
     else:
-        print(root_node.data, end =" -> ")
+        print(root_node.data, end=" -> ")
         pre_order_traversal(root_node.left_child)
         pre_order_traversal(root_node.right_child)
+
 
 def post_order_traversal(root_node):
     """
@@ -55,7 +57,8 @@ def post_order_traversal(root_node):
     else:
         post_order_traversal(root_node.left_child)
         post_order_traversal(root_node.right_child)
-        print(root_node.data, end =" -> ")
+        print(root_node.data, end=" -> ")
+
 
 def in_order_traversal(root_node):
     """
@@ -65,7 +68,7 @@ def in_order_traversal(root_node):
         return
     else:
         in_order_traversal(root_node.left_child)
-        print(root_node.data, end =" -> ")
+        print(root_node.data, end=" -> ")
         in_order_traversal(root_node.right_child)
 
 
@@ -79,7 +82,7 @@ def level_order_traversal(root_node):
         while not(custom_queue.is_empty()):
             element = custom_queue.dequeue()
 
-            print(element.value.data, end = " -> ")
+            print(element.value.data, end=" -> ")
 
             if element.value.left_child is not None:
                 custom_queue.enqueue(element.value.left_child)
@@ -116,21 +119,33 @@ def min_value_node(bstNode):
 
     return current
 
-#
+
 def delete_node(root_node, node_value):
     if root_node is None:
         return root_node
 
     elif root_node.data > node_value:
-        delete_node(root_node.left_child, node_value)
+        root_node.left_child = delete_node(root_node.left_child, node_value)
 
     elif root_node.data < node_value:
-        delete_node(root_node.right_child, node_value)
+        root_node.right_child = delete_node(root_node.right_child, node_value)
 
     else:
-        #now we check how many children does the node has
+        if root_node.left_child is None:
+            temp = root_node.right_child
+            root_node = None
+            return temp
 
+        if root_node.right_child is None:
+            temp = root_node.left_child
+            root_node = None
+            return temp
 
+        temp = min_value_node(root_node.right_child)
+        root_node.data = temp.data
+        root_node.right_child = delete_node(root_node.right_child, temp.data)
+
+    return root_node
 
 
 newBST = TreeNode()
@@ -154,4 +169,14 @@ insert_new_node(newBST, 100)
 
 level_order_traversal(root_node=newBST)
 print()
+
+
 print(min_value_node(newBST).data)
+
+delete_node(newBST, 20)
+
+level_order_traversal(root_node=newBST)
+print()
+
+# min_node = min_value_node(newBST.right_child)
+# print(min_node.data)
