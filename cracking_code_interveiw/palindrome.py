@@ -42,6 +42,11 @@ def print_str(str):
 print_str("abcde")
 
 
-print("i am not sure how i want to go about implementing it")
+print("i am in the feature branch now and I will commit these changes")
+
+
+
+def check_substring():
+    pass
 
 
