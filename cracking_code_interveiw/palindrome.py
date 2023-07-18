@@ -19,6 +19,7 @@ def isPalidromePointer(str):
     return result
 
 
+
 def isPalindrome(str):
     if len(str) <= 1:
         return True
@@ -39,3 +40,13 @@ def print_str(str):
 
 
 print_str("abcde")
+
+
+print("i am in the feature branch now and I will commit these changes")
+
+
+
+def check_substring():
+    pass
+
+
