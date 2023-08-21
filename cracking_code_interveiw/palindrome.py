@@ -1,8 +1,7 @@
 """
     given a string find the longest paldinromic substring
 """
-
-
+ 
 def isPalidromePointer(str):
     left = 0
     right = len(str) - 1
@@ -28,25 +27,5 @@ def isPalindrome(str):
         return isPalindrome(str[1:-1])
 
 
-# print(isPalidromePointer("mom"))
-
-# print(isPalindrome("moms"))
-
-
-def print_str(str):
-    for length in range(len(str), 0, -1):
-        for start in range(len(str) - length + 1):
-            print(str[start : start + length])
-
-
-print_str("abcde")
-
-
-print("i am in the feature branch now and I will commit these changes")
-
-
-
-def check_substring():
-    pass
 
 
