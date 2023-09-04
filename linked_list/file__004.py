@@ -42,4 +42,4 @@ while temp:
 
     temp = temp.next
 
-# print(hash)
+print(hash)
